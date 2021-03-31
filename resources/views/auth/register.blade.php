@@ -63,10 +63,10 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-danger">
                                     {{ __('登録') }}
                                 </button>
-                                <button type="button" class="btn btn-danger" onclick="location.href='{{ route('login') }}'">戻る</button>
+                                <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('login') }}'">戻る</button>
                             </div>
                         </div>
                     </form>

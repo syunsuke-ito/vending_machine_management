@@ -105,17 +105,9 @@ class HomeController extends Controller
      */
     public function showEdit($id)
     {
-        $products = Product::get();
         $companys = Company::all();
         $product = Product::find($id);
-
-        if(is_null($product)){
-            \Session::flash('err_msg', 'データがありません。');
-            return redirect(route('home'));
-        }
-
-        return view('edit', ['product' => $product,
-        'companys' => $companys, 'products' => $products]);
+        return view('edit', ['product' => $product, 'companys' => $companys]);
     }
 
     /**
@@ -125,6 +117,12 @@ class HomeController extends Controller
      */
     public function exeUpdate(Request $request) {
         $inputs = $request->all();
+        $request->validate([
+            'product_name' => 'required',
+            'company_id' => 'required',
+            'price' => 'required',
+            'stock' => 'required'
+        ]);
         
         \DB::beginTransaction();
         try {
@@ -156,8 +154,7 @@ class HomeController extends Controller
                 \DB::rollback();
                 abort(500);
             }
-            \Session::flash('err_msg', 'ブログを更新しました');
-            return redirect(route('home'));
+        return redirect(route('home'));
     }
 
     /**

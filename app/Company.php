@@ -23,9 +23,7 @@ class Company extends Model
         return $this->hasMany('App\Product');
     }
 
-    public function getData(){
-        return $this->company_name;
-    }
+
 
 }
 

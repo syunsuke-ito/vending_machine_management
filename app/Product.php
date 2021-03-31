@@ -28,6 +28,10 @@ class Product extends Model
         return $this->belongsTo('App\Company');
     }
 
+    public function companyGetData(){
+        return $this->company_id->company_name;
+    }
+
     public function productimage()
     {
         return $this->hasMany('App\ProductImage');
